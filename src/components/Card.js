@@ -11,21 +11,12 @@ import { SiChakraui } from "react-icons/si";
 
 const Card = (props) => {
     const iconMap = {
-        ImHtmlFive,
-        ImCss3,
-        IoLogoJavascript,
-        FaReact,
-        SiNodedotjs,
-        DiMongodb,
-        SiExpress,
-        SiChakraui
+        ImHtmlFive,ImCss3,IoLogoJavascript,FaReact,SiNodedotjs,DiMongodb,SiExpress,SiChakraui
     };
-
     const IconComponent = iconMap[props.icon];
-
     return (
         <Box
-            w="xs"
+            w={{ base: "90%", md: "xs" }} 
             bg="#1f242d"
             _dark={{
                 bg: "#222222",
@@ -44,10 +35,10 @@ const Card = (props) => {
                 transform: "translateY(-10px)",
             }}
         >
-            <Icon as={IconComponent} color="#ffae00" boxSize={16} />
+            <Icon as={IconComponent} color="#FF7F00" boxSize={16} />
             <Text color="white" sx={{ fontSize: { base: "1.4rem", md: "1.4rem" }, fontWeight: 700 }}>{props.title}</Text>
             <Text color="white" my="4px" dangerouslySetInnerHTML={{ __html: props.text }} />
-            <Button background="#434242" color='white' size='lg' sx={{ border: "1px solid #434242", transition: "transform 0.3s ease-out", borderRadius: "full", _hover: { transform: "scale(1.1)" } }}>
+            <Button mt="1rem" background="#434242" color='white' size='lg' sx={{ border: "1px solid #434242", transition: "transform 0.3s ease-out", borderRadius: "full", _hover: { transform: "scale(1.1)" } }}>
                 <Link href={props.link} target="_blank" style={{ textDecoration: 'none' }}>
                     Read More
                 </Link>
@@ -55,5 +46,4 @@ const Card = (props) => {
         </Box>
     )
 }
-
 export default Card;

@@ -37,11 +37,20 @@ const Header = () => {
                             display="flex"
                             alignItems="center"
                         >
-                            <Text ml="1rem" sx={{ fontSize: "2rem", fontWeight: 700 }} style={{ color: "#ffae00" }}
+                            <Text ml="2rem" sx={{ fontSize: "2rem", fontWeight: 700 }} style={{ color: "#ffae00" }}
                             >
-                                LOGO
+                                <Text
+                                    fontFamily="Montserrat, sans-serif"
+                                    fontWeight="bold"
+                                    fontSize={{ base: "2xl", md: "4xl" }}
+                                    color="#FF7F00"
+                                    letterSpacing="widest"
+                                    textShadow="2px 2px 0 #5C5C5C"
+                                >
+                                    &lt; <Box className="title" as="span" fontSize="inherit" color="#FF7F00">AAKASH</Box> /&gt;
+                                </Text>
                             </Text>
-                            <Image src=''/>
+                            <Image src='' />
                         </chakra.a>
                     </Flex>
                     <HStack display="flex" alignItems="center" spacing={1}>
@@ -139,4 +148,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;

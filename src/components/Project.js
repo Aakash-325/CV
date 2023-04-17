@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Flex, Text, Image, Stack, HStack, Button, useDisclosure, Link } from '@chakra-ui/react';
-import BlogApp from "../image/BlogApp.png"
-import comingsoon from "../image/comingsoon.png"
+import comingsoon from "../image/comingsoon.png";
+import social from "../image/social.gif"
+import blogimg from "../image/blogimg.png"
 
 const Project = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -33,13 +34,13 @@ const Project = () => {
   };
   const slides = [
     {
-      img: BlogApp,
+      img: blogimg,
       label: "BlogApp",
       description: "A complete Blog Application with User Aothentication.",
       link: "https://animekayo.netlify.app/"
     },
     {
-      img: comingsoon,
+      img: social,
       label: "Second Slide",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       link: ""
@@ -82,14 +83,16 @@ const Project = () => {
     transition: "all .5s",
     ml: `-${currentSlide * 100}%`,
   };
+
   return (
     <Box id='projects'>
       <Text my="5rem" sx={{ textAlign: "center", fontSize: "2.8rem", fontWeight: "bold" }}>
-        Latest <span style={{ color: "#ffae00" }}>Project</span>
+        Latest <span style={{ color: "#FF7F00" }}>Project</span>
       </Text>
-      <Box onMouseOver={onOpen} onMouseOut={onClose} opacity={isOpen ? '.7' : '1'} display="flex" margin={{ base: "2rem", md: "2.5rem", lg: "5rem" }} flexDirection={{ base: "column", md: "row" }} justifyContent="center">
+      <Box display="flex" margin={{ base: "2rem", md: "2.5rem", lg: "5rem" }} flexDirection={{ base: "column", md: "row" }} justifyContent="center">
         <Flex w={{ base: "xs", lg: "4xl", sm: "sm", md: "md" }} pos="relative" overflow="hidden">
-          <Flex h="400px" w="full" {...carouselStyle}>
+          <Flex onMouseOver={onOpen} onMouseOut={onClose} transition="filter 0.01s"
+            _hover={{ filter: "brightness(70%)" }} h={{ base: "240px", md: "280px", lg: "500px" }} w="full" {...carouselStyle}>
             {slides.map((slide, sid) => (
               <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none" position="relative">
                 <Image src={slide.img} alt="carousel image" boxSize="full" backgroundSize="cover" />
@@ -110,11 +113,14 @@ const Project = () => {
                 <Text color="white" fontSize="xs" p="8px 12px" pos="absolute" top="0">
                   {sid + 1} / {slidesCount}
                 </Text>
-                <Stack p="8px 12px" pos="absolute" bottom="24px" textAlign="center" w="full" mb="8" color="white">
-                  <Text fontSize="2xl" fontWeight="bold">
+                <Stack p="8px 12px" pos="absolute" bottom={{ base: "0", md: "24px" }} textAlign="center" w="full" mb="8" color="white">
+                  <Text fontSize={{ base: "xl", md: "2xl", lg: "3xl" }} fontWeight="bold">
                     {slide.label}
                   </Text>
-                  <Text fontSize="lg">{slide.description}</Text>
+                  <Text fontSize={{ base: "sm", md: "lg", lg: "xl" }}>
+                    {slide.description}
+                  </Text>
+
                 </Stack>
               </Box>
             ))}

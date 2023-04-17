@@ -7,17 +7,16 @@ const TextTypingAnimation = ({ text }) => {
     let i = 0;
     const typingInterval = setInterval(() => {
       if (i < text.length) {
-        setDisplayedText(prevText => prevText + text.charAt(i));
-        i++;
+        setDisplayedText(text.substring(0, i + 1));
       } else {
         setTimeout(() => {
           setDisplayedText('');
-          i = 0;
+          i = -1;
         }, 1000);
       }
+      i++;
     }, 80);
-    // Handle initial state of displayedText
-    setDisplayedText('');
+
     return () => clearInterval(typingInterval);
   }, [text]);
 
