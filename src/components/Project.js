@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Flex, Text, Image, Stack, HStack, Button, useDisclosure, Link } from '@chakra-ui/react';
 import comingsoon from "../image/comingsoon.png";
-import social from "../image/social.gif"
-import blogimg from "../image/blogimg.png"
 
 const Project = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -34,21 +32,21 @@ const Project = () => {
   };
   const slides = [
     {
-      img: blogimg,
+      img: "https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667869/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_1_ivclqv.png",
       label: "BlogApp",
       description: "A complete Blog Application with User Aothentication.",
       link: "https://animekayo.netlify.app/"
     },
     {
-      img: social,
-      label: "Second Slide",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: ""
+      img: "https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667864/Portfolio/Blue_Pink_Gradient_Music_Youtube_Channel_Art_brjwm2.png",
+      label: "Music Player",
+      description: "Regular music player using React js.",
+      link: "https://reactplayer.netlify.app/"
     },
     {
-      img: comingsoon,
-      label: "Third Slide",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      img: "https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667877/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_d0i1pn.png",
+      label: "Ecommerce",
+      description: "Ecommerce Website with authentication, Cart and Payment Gateway.",
       link: ""
     },
     {
@@ -58,7 +56,7 @@ const Project = () => {
       link: ""
     },
     {
-      img: "https://images.pexels.com/photos/3124111/pexels-photo-3124111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      img: comingsoon,
       label: "Fifth Slide",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       link: ""
@@ -106,7 +104,11 @@ const Project = () => {
                     visibility={isOpen ? 'visible' : 'hidden'}
                     size='lg'
                     borderRadius="full"
-                    width="8rem">
+                    width="8rem"
+                    _hover={{
+                      bg:"#FFE4A7"
+                    }}
+                    >
                     Visit
                   </Button>
                 </Link>
