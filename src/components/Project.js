@@ -1,160 +1,114 @@
-import React, { useState } from 'react';
-import { Box, Flex, Text, Image, Stack, HStack, Button, useDisclosure, Link } from '@chakra-ui/react';
-import comingsoon from "../image/comingsoon.png";
+import {
+  Box,
+  Flex,
+  Button,
+  chakra,
+  SimpleGrid,
+  Text,
+  Image,
+} from "@chakra-ui/react";
+
+const ProjectSection = ({ title, description, imageUrl, isImageOnRight }) => (
+  <SimpleGrid
+    alignItems="start"
+    columns={{ base: 1, md: 2 }}
+    mb="1rem"
+    spacingY={{ base: 10, md: 32 }}
+    spacingX={{ base: 10, md: 24 }}
+  >
+    <Box
+      order={{
+        base: isImageOnRight ? "initial" : "2",
+        md: isImageOnRight ? "initial" : "2",
+      }}
+    >
+      <chakra.h2
+        mb={4}
+        fontSize={{ base: "3xl", md: "5xl" }}
+        fontWeight="extrabold"
+        letterSpacing="tight"
+        textAlign={{ base: "center", md: "left" }}
+        lineHeight={{ md: "shorter" }}
+        textShadow="2px 0 currentcolor"
+        bgGradient="linear(to-r, orange.300, red.500)"
+        bgClip="text"
+        color="transparent"
+      >
+        {title}
+      </chakra.h2>
+      <chakra.p
+        mb={5}
+        textAlign={{ base: "center", sm: "left" }}
+        color="gray.600"
+        _dark={{ color: "gray.400" }}
+        fontSize={{ md: "lg" }}
+      >
+        {description}
+      </chakra.p>
+      <Button
+        src="#about"
+        colorScheme="gray"
+        size={{ base: "md", md: "lg" }}
+        sx={{
+          borderRadius: "8px",
+          transition: "transform 0.3s ease-out",
+          _hover: {
+            transform: "scale(1.1)",
+            bg: "#434242",
+            borderColor: "#434242",
+            color: "#fff",
+          },
+        }}
+      >
+        Learn more
+      </Button>
+    </Box>
+    <Image borderRadius="10px" src={imageUrl} alt="img" />
+  </SimpleGrid>
+);
 
 const Project = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const arrowStyles = {
-    cursor: "pointer",
-    position: "absolute",
-    top: "50%",
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    backgroundColor: "white",
-    _dark: {
-      backgroundColor: "white",
-      color: "black"
-    },
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontWeight: "bold",
-    fontSize: "18px",
-    transition: "0.3s ease",
-    userSelect: "none",
-    _hover: {
-      opacity: 0.8,
-      boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
-    },
-  };
-  const slides = [
-    {
-      img: "https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667869/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_1_ivclqv.png",
-      label: "BlogApp",
-      description: "A complete Blog Application with User Aothentication.",
-      link: "https://animekayo.netlify.app/"
-    },
-    {
-      img: "https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667864/Portfolio/Blue_Pink_Gradient_Music_Youtube_Channel_Art_brjwm2.png",
-      label: "Music Player",
-      description: "Regular music player using React js.",
-      link: "https://reactplayer.netlify.app/"
-    },
-    {
-      img: "https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667877/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_d0i1pn.png",
-      label: "Ecommerce",
-      description: "Ecommerce Website with authentication, Cart and Payment Gateway.",
-      link: ""
-    },
-    {
-      img: comingsoon,
-      label: "Fourth Slide",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: ""
-    },
-    {
-      img: comingsoon,
-      label: "Fifth Slide",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: ""
-    },
-  ];
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slidesCount = slides.length;
-
-  const prevSlide = () => {
-    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
-  };
-
-  const setSlide = (slide) => {
-    setCurrentSlide(slide);
-  };
-
-  const carouselStyle = {
-    transition: "all .5s",
-    ml: `-${currentSlide * 100}%`,
-  };
-
   return (
-    <Box id='projects'>
-      <Text my="5rem" sx={{ textAlign: "center", fontSize: "2.8rem", fontWeight: "bold" }}>
-        Latest <span style={{ color: "#FF7F00" }}>Project</span>
+    <Box id="projects" margin={{ base: "2rem", md: "5rem", lg: "5rem" }}>
+      <Text
+        sx={{ textAlign: "center", fontSize: "2.8rem", fontWeight: "bold" }}
+      >
+        Latest <span style={{ color: "#FF7F00" }}>Projects</span>
       </Text>
-      <Box display="flex" margin={{ base: "2rem", md: "2.5rem", lg: "5rem" }} flexDirection={{ base: "column", md: "row" }} justifyContent="center">
-        <Flex w={{ base: "xs", lg: "4xl", sm: "sm", md: "md" }} pos="relative" overflow="hidden">
-          <Flex onMouseOver={onOpen} onMouseOut={onClose} transition="filter 0.01s"
-            _hover={{ filter: "brightness(70%)" }} h={{ base: "240px", md: "280px", lg: "500px" }} w="full" {...carouselStyle}>
-            {slides.map((slide, sid) => (
-              <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none" position="relative">
-                <Image src={slide.img} alt="carousel image" boxSize="full" backgroundSize="cover" />
-                <Link href={slide.link} target="_blank">
-                  <Button
-                    position="absolute"
-                    top="50%"
-                    left="50%"
-                    transform="translate(-50%, -50%)"
-                    colorScheme="yellow"
-                    visibility={isOpen ? 'visible' : 'hidden'}
-                    size='lg'
-                    borderRadius="full"
-                    width="8rem"
-                    _hover={{
-                      bg:"#FFE4A7"
-                    }}
-                    >
-                    Visit
-                  </Button>
-                </Link>
-                <Text color="white" fontSize="xs" p="8px 12px" pos="absolute" top="0">
-                  {sid + 1} / {slidesCount}
-                </Text>
-                <Stack p="8px 12px" pos="absolute" bottom={{ base: "0", md: "24px" }} textAlign="center" w="full" mb="8" color="white">
-                  <Text fontSize={{ base: "xl", md: "2xl", lg: "3xl" }} fontWeight="bold">
-                    {slide.label}
-                  </Text>
-                  <Text fontSize={{ base: "sm", md: "lg", lg: "xl" }}>
-                    {slide.description}
-                  </Text>
-
-                </Stack>
-              </Box>
-            ))}
-          </Flex>
-          <Text {...arrowStyles} left="0" onClick={prevSlide}>
-            &#10094;
-          </Text>
-          <Text {...arrowStyles} right="0" onClick={nextSlide}>
-            &#10095;
-          </Text>
-          <HStack justify="center" pos="absolute" bottom="8px" w="full">
-            {Array.from({
-              length: slidesCount,
-            }).map((_, slide) => (
-              <Box
-                key={`dots-${slide}`}
-                cursor="pointer"
-                boxSize={["7px", null, "15px"]}
-                m="0 2px"
-                bg={currentSlide === slide ? "white" : "whiteAlpha.400"}
-                rounded="50%"
-                display="inline-block"
-                transition="background-color 0.6s ease"
-                _hover={{
-                  bg: "whiteAlpha.700",
-                }}
-                onClick={() => setSlide(slide)}
-              ></Box>
-            ))}
-          </HStack>
-        </Flex>
-      </Box>
+      <Flex
+        bg="#edf3f8"
+        _dark={{ bg: "#3e3e3e" }}
+        w="full"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Box bg="white" _dark={{ bg: "gray.800" }} px={8} py={20} mx="auto">
+          <ProjectSection
+            title="Clear overview for efficient tracking"
+            description="Handle your subscriptions and transactions efficiently with the clear overview in Dashboard. Features like the smart search option allow you to quickly find any data you’re looking for."
+            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667869/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_1_ivclqv.png"
+            isImageOnRight={false}
+          />
+          <ProjectSection
+            title="Decide how you integrate Payments"
+            description="Love to code? Next to our ready-made and free plugins you can use our expansive yet simple API; decide how you integrate Payments and build advanced and reliable products yourself from scratch."
+            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667877/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_d0i1pn.png"
+            isImageOnRight={true}
+          />
+          <ProjectSection
+            title="Clear overview for efficient tracking"
+            description="Handle your subscriptions and transactions efficiently with the clear overview in Dashboard. Features like the smart search option allow you to quickly find any data you’re looking for."
+            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1714327710/Portfolio/Swift_Buy_iehjyr.png"
+            isImageOnRight={false}
+          />
+          <ProjectSection
+            title="Decide how you integrate Payments"
+            description="Love to code? Next to our ready-made and free plugins you can use our expansive yet simple API; decide how you integrate Payments and build advanced and reliable products yourself from scratch."
+            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667877/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_d0i1pn.png"
+            isImageOnRight={true}
+          />
+        </Box>
+      </Flex>
     </Box>
   );
 };

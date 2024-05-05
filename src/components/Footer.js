@@ -1,8 +1,10 @@
-import React from 'react';
-import { Flex, chakra, Icon } from '@chakra-ui/react';
-import { BsFillSuitHeartFill } from "react-icons/bs";
+import React from "react";
+import { Flex, chakra } from "@chakra-ui/react";
 
 const Footer = () => {
+  // Get the current year dynamically
+  const currentYear = new Date().getFullYear();
+
   return (
     <Flex
       w="full"
@@ -31,10 +33,10 @@ const Footer = () => {
         }}
         textAlign="center"
         display="flex"
-        alignItems="center" // Align icon and text vertically
-        gap={1} // Add some space between icon and text
+        alignItems="center"
+        gap={1}
       >
-        Made with <Icon as={BsFillSuitHeartFill} color="#EF4444" boxSize={6} /> by Aakash
+        copyright &copy; {currentYear} | Aakash
       </chakra.p>
     </Flex>
   );
