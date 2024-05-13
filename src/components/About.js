@@ -21,14 +21,14 @@ const About = () => {
         />
       </Box>
       <Box>
-        <Text sx={{ fontSize: "2.8rem", fontWeight: "bold" }}>
+        <Text sx={{ fontSize: "3.2rem", fontWeight: "bold" }}>
           About <span style={{ color: "#FF7F00" }}>Me</span>
         </Text>
         <Text sx={{ fontSize: "1.6rem", fontWeight: "bold" }}>
           Full Stack Developer!
         </Text>
         <br />
-        <Text sx={{ fontSize: "1rem" }}>
+        <Text fontSize={{ md: "lg" }}>
           I'm a{" "}
           <span style={{ color: "#FF7F00", fontWeight: "bold" }}>
             FullStack Web Developer

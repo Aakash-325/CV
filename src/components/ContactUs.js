@@ -28,7 +28,7 @@ const ContactUs = () => {
       <Box id="contact">
         <Text
           my="5rem"
-          sx={{ textAlign: "center", fontSize: "3rem", fontWeight: "bold" }}
+          sx={{ textAlign: "center", fontSize: "3.2rem", fontWeight: "bold" }}
         >
           Contact <span style={{ color: "#FF7F00" }}>us</span>
         </Text>
@@ -56,7 +56,7 @@ const ContactUs = () => {
               aakashchaurasiya033@gmail.com
             </Text>
             <br />
-            <Text sx={{ fontSize: { base: "0.8rem", md: "1rem" } }}>
+            <Text fontSize={{ md: "lg" }}>
               We love to hear from our{" "}
               <span style={{ color: "#FF7F00", fontWeight: "bold" }}>
                 visitors!

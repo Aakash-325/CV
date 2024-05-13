@@ -173,19 +173,19 @@ const Header = () => {
                 />
 
                 <Button w="full" variant="ghost">
-                  Features
+                  Home
                 </Button>
                 <Button w="full" variant="ghost">
-                  Pricing
+                  About
                 </Button>
                 <Button w="full" variant="ghost">
-                  Blog
+                  Skills
                 </Button>
                 <Button w="full" variant="ghost">
-                  Company
+                  Projects
                 </Button>
                 <Button w="full" variant="ghost">
-                  Sign in
+                  Contact
                 </Button>
               </VStack>
             </Box>

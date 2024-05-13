@@ -19,9 +19,11 @@ const Home = () => {
     >
       <Box>
         <Text
+          className="home-text1"
           sx={{
-            fontSize: { base: "2.6rem", md: "3.2rem", sm: "2.2rem" },
+            fontSize: { base: "16px", md: "16px", sm: "14px" },
             fontWeight: 700,
+            my: "1rem",
           }}
         >
           Hello, there
@@ -46,7 +48,7 @@ const Home = () => {
             <TextTypingAnimation text="Full Stack Developer" />
           </span>
         </Text>
-        <Text mt={4} mb={8}>
+        <Text mt={4} mb={8} fontSize={{ md: "lg" }}>
           Full Stack web developer using cutting edge technologies to develop{" "}
           <Box as="span" fontWeight="bold" color="#FF7F00">
             clean, elegant, and fast

@@ -8,11 +8,18 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-const ProjectSection = ({ title, description, imageUrl, isImageOnRight }) => (
+const ProjectSection = ({
+  title,
+  description,
+  imageUrl,
+  isImageOnRight,
+  githubLink,
+  liveLink,
+}) => (
   <SimpleGrid
     alignItems="start"
     columns={{ base: 1, md: 2 }}
-    mb="1rem"
+    mb="2rem"
     spacingY={{ base: 10, md: 32 }}
     spacingX={{ base: 10, md: 24 }}
   >
@@ -45,23 +52,43 @@ const ProjectSection = ({ title, description, imageUrl, isImageOnRight }) => (
       >
         {description}
       </chakra.p>
-      <Button
-        src="#about"
-        colorScheme="gray"
-        size={{ base: "md", md: "lg" }}
-        sx={{
-          borderRadius: "8px",
-          transition: "transform 0.3s ease-out",
-          _hover: {
-            transform: "scale(1.1)",
-            bg: "#434242",
-            borderColor: "#434242",
-            color: "#fff",
-          },
-        }}
-      >
-        Learn more
-      </Button>
+      <Flex gap="1.4rem">
+        <Button
+          colorScheme="gray"
+          size={{ base: "md", md: "lg" }}
+          sx={{
+            borderRadius: "8px",
+            transition: "transform 0.3s ease-out",
+            _hover: {
+              transform: "scale(1.1)",
+              bg: "#434242",
+              borderColor: "#434242",
+              color: "#fff",
+            },
+          }}
+          onClick={() => window.open(liveLink, "_blank")}
+        >
+          Live
+        </Button>
+
+        <Button
+          colorScheme="gray"
+          size={{ base: "md", md: "lg" }}
+          sx={{
+            borderRadius: "8px",
+            transition: "transform 0.3s ease-out",
+            _hover: {
+              transform: "scale(1.1)",
+              bg: "#434242",
+              borderColor: "#434242",
+              color: "#fff",
+            },
+          }}
+          onClick={() => window.open(githubLink, "_blank")}
+        >
+          Github
+        </Button>
+      </Flex>
     </Box>
     <Image borderRadius="10px" src={imageUrl} alt="img" />
   </SimpleGrid>
@@ -71,7 +98,12 @@ const Project = () => {
   return (
     <Box id="projects" margin={{ base: "2rem", md: "5rem", lg: "5rem" }}>
       <Text
-        sx={{ textAlign: "center", fontSize: "2.8rem", fontWeight: "bold" }}
+        sx={{
+          textAlign: "center",
+          fontSize: "3.2rem",
+          fontWeight: "bold",
+          my: "2rem",
+        }}
       >
         Latest <span style={{ color: "#FF7F00" }}>Projects</span>
       </Text>
@@ -84,28 +116,36 @@ const Project = () => {
       >
         <Box bg="white" _dark={{ bg: "gray.800" }} px={8} py={20} mx="auto">
           <ProjectSection
-            title="Clear overview for efficient tracking"
-            description="Handle your subscriptions and transactions efficiently with the clear overview in Dashboard. Features like the smart search option allow you to quickly find any data you’re looking for."
-            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667869/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_1_ivclqv.png"
+            title="Social Media Application with integrated Socket"
+            description="Connect with the people you love through this social media application. Built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, it features real-time chat functionality powered by Socket.IO, allowing users to communicate instantly."
+            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1714971425/Portfolio/esxqik4wy9fk2xt683k6.png"
             isImageOnRight={false}
+            liveLink="https://ecommerce-beta-wheat.vercel.app/"
+            githubLink="https://github.com/Aakash-325/ecommerce"
           />
           <ProjectSection
-            title="Decide how you integrate Payments"
-            description="Love to code? Next to our ready-made and free plugins you can use our expansive yet simple API; decide how you integrate Payments and build advanced and reliable products yourself from scratch."
-            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667877/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_d0i1pn.png"
+            title="Music Player built using MERN"
+            description="Dive into the world of music with this React-based music player. Leveraging the power of the MERN (MongoDB, Express.js, React.js, Node.js) stack, this application allows you to enjoy your favorite tunes seamlessly. Whether you love coding or not, this player offers a user-friendly experience. "
+            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1714971419/Portfolio/kibxhgvaa26g5loiqc93.png"
             isImageOnRight={true}
+            liveLink="https://reactplayer.netlify.app/"
+            githubLink="https://github.com/Aakash-325/React-Music-Player"
           />
           <ProjectSection
-            title="Clear overview for efficient tracking"
-            description="Handle your subscriptions and transactions efficiently with the clear overview in Dashboard. Features like the smart search option allow you to quickly find any data you’re looking for."
+            title="E-commerce Platform with Payment Gateway"
+            description="Get the things you need with a single click through this e-commerce platform. Built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, it offers a seamless shopping experience. Integrated with Stripe for secure payments and smart search option make finding products easy."
             imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1714327710/Portfolio/Swift_Buy_iehjyr.png"
             isImageOnRight={false}
+            liveLink="https://socialsync.vercel.app/"
+            githubLink="https://github.com/Aakash-325/SocialSync"
           />
           <ProjectSection
-            title="Decide how you integrate Payments"
-            description="Love to code? Next to our ready-made and free plugins you can use our expansive yet simple API; decide how you integrate Payments and build advanced and reliable products yourself from scratch."
-            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1687667877/Portfolio/Online_Shopping_Colorful_Modern_Facebook_Cover_d0i1pn.png"
+            title="File Sharing Application"
+            description="Share large files quickly and easily with this file-sharing application. Built with user convenience in mind, this application simplifies the process of sharing files. Whether it's documents, images, or videos, simply generate a link and share it with anyone you want."
+            imageUrl="https://res.cloudinary.com/dnzxyvvqi/image/upload/v1715528760/Portfolio/hnh19uvodlne0zkqnhs2.png"
             isImageOnRight={true}
+            liveLink="https://file8share.netlify.app"
+            githubLink="https://github.com/Aakash-325/FileShare"
           />
         </Box>
       </Flex>
